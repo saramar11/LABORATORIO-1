@@ -49,7 +49,7 @@ print("PUNTO 1")
 
 print("A) MEDIA DE LA SEÑAL")
 
-#usando parametro de Numpy
+#usando funcion de Numpy
 media1 = np.mean(valores)
 print("Media de datos con Numpy:", media1, "mV")
 
@@ -121,26 +121,27 @@ n, bins, patches = plt.hist(valores, bins = int_clase , edgecolor='blue')
 # bins: los bordes de los bins
 # patches: los objetos gráficos del histograma representa elementos graficos (rectangulos)
 
-plt.title('Histograma de senal')
-plt.xlabel('Valor')
-plt.ylabel('Frecuencia')
-plt.tight_layout()
-plt.show()
+plt.title('Histograma de senal') #titulo
+plt.xlabel('Valor') #nombre eje x
+plt.ylabel('Frecuencia') #nombre eje y
+plt.tight_layout() # ajustar elementos del grafico para un mejor orden
+plt.show() #mostrar el grafico
 
 """ E)FUNCION DE PROBABILIDAD")""" 
 
-#calular el centro de los bints
+#calular el centro de los bins
 bin_centers = (bins[:-1] + bins[1:]) / 2
 
-#graficar funcion
+#graficar histograma
 plt.hist(valores, bins = int_clase , edgecolor='blue')
+#Mostrar la función de probabilidad sobre el histograma
 plt.plot(bin_centers, n, '-', color='r', label='Función de probabilidad')
 
-plt.title('Histograma de senal con función de probabilidad')
-plt.xlabel('Valor')
-plt.ylabel('Frecuencia')
-plt.tight_layout()
-plt.show()
+plt.title('Histograma de senal con función de probabilidad') #titulo
+plt.xlabel('Valor') #nombre eje x
+plt.ylabel('Frecuencia') # nombre eje y
+plt.tight_layout()  # ajustar elementos del grafico para un mejor orden
+plt.show()#mostrar el grafico
 
 
 
@@ -296,7 +297,6 @@ print("")
 print("SNR 1 = P. señal > P. ruido impulso")
 
 #generacion de la señal  de ruido impulso
-
 prob = 0.05 # 5% de probabilidad de que un punto sea impulso
 
 ruido = np.random.choice([0,1], size = len(valores), p = [1-prob, prob])
@@ -437,16 +437,17 @@ fs = 100
 duration = 100
 #tiempo de muestreo desde 0 a 1 segundo 
 t = np.linspace(0, duration, fs * duration)*0.01
+
 #frecuenia de la señal Hz
 f = 2
-
 #cantidad de picos de ruido
 num_impulses = 5
+
 #Amplitud
 impulse_amplitude = 0.001
+
 #lea t y ubique los picos aleatoriamente
 impulse_positions = np.random.choice(np.arange(len(t)), num_impulses, replace=False)
-
 impulse_noise = np.zeros_like(t)
 impulse_noise[impulse_positions] = impulse_amplitude
 
